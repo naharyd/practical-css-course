@@ -1,0 +1,42 @@
+$nonbreakableSpace: '\00a0';
+
+%center-paths {
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+}
+
+%container-dimension {
+  &::before {
+    content: $nonbreakableSpace;
+  }
+}
+
+%parent-styles {
+  @extend %container-dimension;
+  position: relative;
+}
+
+%child-styles {
+  & > i {
+    @extend %center-paths;
+    font-style: normal;
+    position: absolute;
+  }
+}
+
+@mixin pathStyle($index, $color) {
+  & > [class*="path#{$index}"] {
+    color: $color;
+  }
+}
+
+{% for key, glyph in multicolorGlyphs %}
+.{{ className }}-{{ key }} {
+  @extend %parent-styles;
+  @extend %child-styles;
+  {% if glyphsColors[key] %}{% for i in range(1, glyph.length + 1) -%}
+    @include pathStyle({{ i }}, {{ glyphsColors[key][i-1] or 'transparent' }});
+  {% endfor %}{% endif %}
+}
+{% endfor %}

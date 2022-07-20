@@ -1,0 +1,16 @@
+{
+  "templateClassName": "practical-css-icon",
+  "templateFontPath": "./../assets/fonts/practical-css-icons/",
+  "customTemplateName": "practical-css-icons",
+  "dest": "src/assets/fonts/practical-css-icons",
+  "destTemplate": "src/styles",
+  "files": "svg-icons/**/*.svg",
+  "fontHeight": 512,
+  "fontName": "practical-css-icon",
+  "normalize": true,
+  "template": "./scripts/generate-webfont/generate-webfont.scss.njk",
+  "title": "Practical CSS Portal Icons",
+  "formats": ["woff2", "woff", "ttf", "eot"],
+  "multicolorMap": {
+  }
+}

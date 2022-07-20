@@ -1,23 +1,36 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# compiled output
+/src/assets/fonts/practical-css-icons
+/src/styles/practical-css-icons.scss
+/src/styles/practical-css-icons.enum.ts
+/src/styles/practical-css-icons-reference.scss
+/src/styles/practical-css-icons-multicolor.scss
+
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
-# testing
-/coverage
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # production
 /build
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

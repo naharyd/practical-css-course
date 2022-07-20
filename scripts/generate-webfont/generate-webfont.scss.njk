@@ -1,0 +1,69 @@
+{% for glyph in glyphs
+%}${{ className }}-{{ glyph.name }}: "\{{ glyph.unicode[0].charCodeAt(0).toString(16) }}";
+{% endfor %}
+@font-face {
+    font-family: {{ fontName }};
+    {% if formats.indexOf('eot')>-1 -%}
+        src: {% if isFontEmbed and (embedFontList.indexOf('eot') != -1) -%}
+             url("data:font/embedded-opentype;base64,{{ fonts.eot() }}") format("embedded-opentype"){% else -%}
+             url("{{ fontPath }}{{ fontName }}.eot?{{ cacheString }}{% if hash %}&v={{ hash }}{% endif %}#iefix") format("embedded-opentype"){%- endif -%};
+    {%- endif -%}
+    src: {% if formats.indexOf('eot') != -1 -%}
+            url("{{ fontPath }}{{ fontName }}.eot?{% if hash %}v={{ hash }}{% endif %}#iefix") format("embedded-opentype")
+            {%- set nothing = formats.splice(formats.indexOf('eot'), 1) -%}
+            {%- if formats.length != 0 -%}, {% else -%}; {% endif -%}
+        {%- endif -%}
+        {%- if formats.indexOf('woff2') != -1 -%}
+            {% if isFontEmbed and (embedFontList.indexOf('woff2') != -1) -%}
+                url("data:font/woff2;base64,{{ fonts.woff2() }}") format("woff2"){% else -%}
+                url("{{ fontPath }}{{ fontName }}.woff2?{{ cacheString }}{% if hash %}&v={{ hash }}{% endif %}") format("woff2"){%- endif -%}
+            {%- set nothing = formats.splice(formats.indexOf('woff2'), 1) -%}
+            {%- if formats.length != 0 -%}, {% else -%}; {% endif -%}
+        {%- endif -%}
+        {%- if formats.indexOf('woff') != -1 -%}
+            {% if isFontEmbed and (embedFontList.indexOf('woff') != -1) -%}
+            url("data:font/woff;base64,{{ fonts.woff() }}") format("woff"){% else -%}
+            url("{{ fontPath }}{{ fontName }}.woff?{{ cacheString }}{% if hash %}&v={{ hash }}{% endif %}") format("woff"){%- endif -%}
+            {%- set nothing = formats.splice(formats.indexOf('woff'), 1) -%}
+            {%- if formats.length != 0 -%}, {% else -%}; {% endif -%}
+        {%- endif -%}
+        {%- if formats.indexOf('ttf') != -1 -%}
+            {% if isFontEmbed and (embedFontList.indexOf('ttf') != -1) -%}
+            url("data:font/truetype;base64,{{ fonts.ttf() }}") format("truetype"){% else -%}
+            url("{{ fontPath }}{{ fontName }}.ttf?{{ cacheString }}{% if hash %}&v={{ hash }}{% endif %}") format("truetype"){%- endif -%}
+            {%- set nothing = formats.splice(formats.indexOf('ttf'), 1) -%}
+            {%- if formats.length != 0 -%}, {% else -%}; {% endif -%}
+        {%- endif -%}
+        {%- if formats.indexOf('svg') != -1 -%}
+            url("{{ fontPath }}{{ fontName }}.svg?{{ cacheString }}{% if hash %}&v={{ hash }}{% endif %}#{{ fontName }}") format("svg");
+        {%- endif %}
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+%{{ className }} {
+    font-family: "{{fontName}}";
+    display: inline-block;
+    inline-size: 1em;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.{{ className }} {
+    @extend %{{ className }};
+}
+{% for glyph in glyphs
+%}
+
+.{{ className }}-{{ glyph.name }}::before {
+    content: "\{{ glyph.unicode[0].charCodeAt(0).toString(16) }}";
+}{% endfor %}

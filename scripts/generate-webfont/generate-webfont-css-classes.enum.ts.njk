@@ -1,0 +1,13 @@
+export enum {{ projectName }} {
+  BASE_CLASS = '{{ className }}',
+{% for glyph in monochromaticPascalCase%}  {{ glyph.variableName }} = '{{ className }}-{{ glyph.name }}',{{ '\n' }}{% endfor %}
+{% if multicolorPascalCase|length %}  /* Multicolor Icons: */
+{% for glyph in multicolorPascalCase%}  {{ glyph.variableName }} = '{{ className }}-{{ glyph.name }}',{{ '\n' }}{% endfor %}{% endif %}}
+
+export enum {{ projectName }}Ligature {
+  FONT_CLASS = '{{ className }}',
+  {% for glyph in monochromaticPascalCase
+  %}{{ glyph.variableName }} = '{{ glyph.snakeName }}',
+  {% endfor %}
+  /* Multicolor Icons - NOT SUPPORTED */
+}

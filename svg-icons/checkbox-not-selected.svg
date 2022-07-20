@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>checkbox_not_selected</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="SVG's-for-export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="checkbox_not_selected" fill-rule="nonzero" fill="#000000">
+            <path d="M1,1.991155 L1,20.008845 C1,20.5572812 1.44299485,21 1.991155,21 L20.008845,21 C20.5572812,21 21,20.5570052 21,20.008845 L21,1.991155 C21,1.44271877 20.5570052,1 20.008845,1 L1.991155,1 C1.44271877,1 1,1.44299485 1,1.991155 Z M0,1.991155 C0,0.891470458 0.889673948,0 1.991155,0 L20.008845,0 C21.1085295,0 22,0.889673948 22,1.991155 L22,20.008845 C22,21.1085295 21.1103261,22 20.008845,22 L1.991155,22 C0.891470458,22 0,21.1103261 0,20.008845 L0,1.991155 Z" id="Rectangle-5"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+/* FIX ERROR FOR "module": "esnext",
+* import fs from 'fs-extra';
+* ^^^^^^
+* SyntaxError: Cannot use import statement outside a module
+*/
+
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+  }
+}
