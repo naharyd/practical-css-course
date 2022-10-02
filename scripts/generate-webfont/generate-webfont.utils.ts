@@ -49,6 +49,19 @@ export async function makeDir(path: string): Promise<void> {
   return fs.existsSync(path) ? Promise.resolve() : mkdirp(path) as Promise<void>;
 }
 
+/*export async function makeDir(path: string): Promise<void> {
+  return fs.existsSync(path) ? Promise.resolve() : new Promise<void>((resolve, reject) => {
+    // @ts-ignore
+    mkdirp(path, (error: string | number | undefined) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  });
+}*/
+
 /*
 ** caching behavior - if data didn't changed (svg, configuration and file exist) then do not generate the fonts **
 const md5: Hash = crypto.createHash('md5');

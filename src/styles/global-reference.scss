@@ -1,0 +1,28 @@
+@import 'src/styles/variables-keys';
+@import "src/styles/z-index";
+
+$codePreviewBgColor: #454b52;
+
+%inputVisibleForScreenReadersOnly {
+  block-size: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  inline-size: 0.1px;
+  z-index: -1;
+}
+
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%coverLayoutPadding {
+  margin-block-start: calc(-1 * #{var($layoutContentPaddingTop)});
+  margin-inline-end: calc(-1 * #{var($layoutContentPaddingRightLeft)});
+  margin-inline-start: calc(-1 * #{var($layoutContentPaddingRightLeft)});
+  padding-block-start: var($layoutContentPaddingTop);
+  padding-inline-end: var($layoutContentPaddingRightLeft);
+  padding-inline-start: var($layoutContentPaddingRightLeft);
+}
