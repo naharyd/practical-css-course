@@ -46,10 +46,9 @@ export function sassToCss(sassData: string): string {
 }
 
 export async function makeDir(path: string): Promise<void> {
-  return fs.existsSync(path) ? Promise.resolve() : mkdirp(path) as Promise<void>;
+  return Number(process.versions.node.split('.')[0]) < 15 ? makeDir14AndLower(path) : makeDir16AndHigher(path);
 }
-
-/*export async function makeDir(path: string): Promise<void> {
+export async function makeDir14AndLower(path: string): Promise<void> {
   return fs.existsSync(path) ? Promise.resolve() : new Promise<void>((resolve, reject) => {
     // @ts-ignore
     mkdirp(path, (error: string | number | undefined) => {
@@ -60,7 +59,11 @@ export async function makeDir(path: string): Promise<void> {
       }
     });
   });
-}*/
+}
+
+export async function makeDir16AndHigher(path: string): Promise<void> {
+  return fs.existsSync(path) ? Promise.resolve() : mkdirp(path) as Promise<void>;
+}
 
 /*
 ** caching behavior - if data didn't changed (svg, configuration and file exist) then do not generate the fonts **
